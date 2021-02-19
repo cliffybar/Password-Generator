@@ -1,5 +1,5 @@
-// Prompt variables
-var passLength, passLowercase, passUppercase, passNumeric, passSpecial
+// Prompt declarations
+var passLength, passLowercase, passUppercase, passNumbers, passSpecial
 
 // Character arrays for prompts
 var lowercaseArray = [
@@ -34,7 +34,7 @@ var uppercaseArray = [
     'Y', 'Z'
 ];
 
-var numericArray = [
+var numbersArray = [
     '0', '1',
     '2', '3', 
     '4', '5',
@@ -62,7 +62,33 @@ var specialArray = [
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-// Password function
+// Password Generator function
+var passwordGenerator = function() {
+
+    // Prompt for password length
+    passLength = parseInt(window.prompt("How long would you like your password? Password must be between 8 and 128 characters."));
+
+    if (passLength < 7 || passLength > 128) {
+        window.alert("Invalid length. Please try again.")
+    }
+
+    // If true, user answers below prompts
+    else {
+        passLowercase = confirm("Password to include lowercase letters? Click OK for 'Yes' and Cancel for 'No'.");
+        console.log(passLowercase);
+
+        passUppercase = confirm("Password to include uppercase letters? Click OK for 'Yes' and Cancel for 'No'.");
+        console.log(passUppercase);
+
+        passNumbers = confirm("Password to include numbers? Click OK for 'Yes' and Cancel for 'No'.");
+        console.log(passNumbers);
+
+        passSpecial = confirm("Password to include special letters? Click OK for 'Yes' and Cancel for 'No'.");
+        console.log(passSpecial);
+    };
+};
+
+passwordGenerator();
 
 
 // Write password to the #password input
